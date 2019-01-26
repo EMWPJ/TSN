@@ -1,0 +1,57 @@
+﻿#ifndef CLB_H
+#define CLB_H
+#include <QDateTime>
+#include <QVector>
+#include "files/info.h"
+
+typedef struct
+{
+    qint16 fcn;//频带号
+    float baseband;//基频
+    qint16 harmonic;//谐波次数
+    float rawreal;
+    float rawimag;
+    float err;
+    float FC;//拐角频率
+    float real;//校正实部
+    float imag;//校正虚部
+}clbline;
+
+
+class CLB
+{
+public:
+    QString filepath;
+    QDateTime time;
+    qint8 week;
+    qint8 century;
+    qint16 SNUM;
+    qint16 NCHN;
+    qint16 unknow1;
+    qint16 STAT;
+    qint16 unknow2;
+    qint16 unknow3;
+    QString HW;
+    QString VER;
+    qint32 TCMB;
+    qint32 TALS;
+    qint32 LFRQ;
+    qint32 V5SR;
+    qint32 LPFR;
+    QVector < clbline > datas;
+
+public:
+    QVector < Info > Infos;
+
+public:
+    CLB();
+    CLB(QString filename);
+    void setFileName(QString filename);
+    bool read();
+    qint16 nchn();
+    qint16 boxsn();
+    QDateTime datatime();
+    QVector < Info > information();
+};
+
+#endif // CLB_H

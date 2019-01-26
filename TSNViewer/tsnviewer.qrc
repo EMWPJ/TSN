@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>left.ico</file>
+        <file>right.ico</file>
+    </qresource>
+</RCC>
